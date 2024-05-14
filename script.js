@@ -1,28 +1,20 @@
 let random = Math.floor(Math.random() * 3) + 1;
-function showResult1() {
-    if(document.getElementById("1").id == random) {
-        document.getElementById("1").className = "btn btn-success";
-        document.getElementById("text").innerHTML = "Castigator!"
+
+function showResult(id) {
+    if (id == random) {
+        document.getElementById(id).className = 'btn btn-success';
+        document.getElementById('text').innerHTML = 'Winner!';
     } else {
-        document.getElementById("1").className = "btn btn-danger"
-        document.getElementById("text").innerHTML = "Necastigator :("
+        document.getElementById(id).className = 'btn btn-danger';
+        document.getElementById('text').innerHTML = 'Looser :(';
     }
 }
-function showResult2() {
-    if(document.getElementById("2").id == random) {
-        document.getElementById("2").className = "btn btn-success";
-        document.getElementById("text").innerHTML = "Castigator!"
-    } else {
-        document.getElementById("2").className = "btn btn-danger"
-        document.getElementById("text").innerHTML = "Necastigator :("
-    }
-}
-function showResult3() {
-    if(document.getElementById("3").id == random) {
-        document.getElementById("3").className = "btn btn-success";
-        document.getElementById("text").innerHTML = "Castigator!"
-    } else {
-        document.getElementById("3").className = "btn btn-danger"
-        document.getElementById("text").innerHTML = "Necastigator :("
+
+function generateButtons() {
+    let buttons = document.getElementById('number-input').value
+    for (let id = 1; id <= buttons; ++id) {
+    document.getElementById('container').innerHTML += `
+<button id="${id}" type="button" class="btn btn-secondary" onClick="showResult(id)">${id}</button>
+`;
     }
 }
